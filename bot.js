@@ -6,6 +6,7 @@
 
 var Discord = require('discord.io');
 var auth    = require('./auth.json');
+var config  = require('./config.json');
 var request = require('request');
 
 const getLogPrefix = function () {
@@ -37,10 +38,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         return;
     }
     console.log(getLogPrefix() + user + ' is hungry!');
-    
-    // TODO: This
-    var isCalvin = false;
-    
+
     // Define function to send messages to Discord
     var sendMessage = function (m) {
         bot.sendMessage({to: channelID, message: m});
@@ -56,7 +54,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     ]
     sendMessage(startingMessages[Math.floor(Math.random() * startingMessages.length)]);
     
-    var yelpSearchUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=34.705053&longitude=-82.882667&radius=10000&limit=50&price=1,2,3&open_now=true';
+    var baseYelpSearchUrl = config.baseYelpSearchUrl;
+    var latitude = config.latitude;
+    var longitude = config.longitude;
+    var radius = config.radiusMeters;
+    var yelpSearchUrl = `${baseYelpSearchUrl}&latitude=${latitude}&longitude=${longitude}&radius=${radius}`;
     request(
         {
             url: yelpSearchUrl,

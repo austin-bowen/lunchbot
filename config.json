@@ -1,0 +1,6 @@
+{
+  "latitude": "<latitude>",
+  "longitude": "<longitude>",
+  "radiusMeters": 10000,
+  "baseYelpSearchUrl": "https://api.yelp.com/v3/businesses/search?term=restaurant&limit=50&price=1,2,3&open_now=true"
+}
