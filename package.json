@@ -1,0 +1,11 @@
+{
+    "name": "LunchBot",
+    "version": "1.0.0",
+    "description": "Tells you where to eat lunch.",
+    "main": "bot.js",
+    "author": "Austin Bowen <austin.bowen.314@gmail.com>",
+    "dependencies": {
+        "discord.io": "github:woor/discord.io#gateway_v6",
+        "request": "^2.83.0"
+    }
+}
